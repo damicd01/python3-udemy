@@ -4,4 +4,7 @@ def cels_to_farh(cel):                          #cel here is a local varable to 
     farh = cel * 9/5 + 32                       #far and cel local variables
     return farh
 
-print (cels_to_farh(cel))                       #call funtion using the global variable
+if cel <= 273.15:
+    print (cels_to_farh(cel))
+else:
+    print ("That's far too cold")
