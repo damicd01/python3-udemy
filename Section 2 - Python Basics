@@ -467,3 +467,22 @@ Used to iterate over a data objects and run code against them.  For Example:
 600
 700
 800
+
+
+
+OPENING FILES IN WRITE MODE
+
+By default when you use the open() function on a file the file is opened in read-only mode.  If you wish to open a file in write mode and write text to it you do:
+
+>>> myfile = open("write_mode.txt", "w")
+>>> myfile.write("dan_test")
+>>> myfile.close()
+
+>>> myfile = "write_mode.txt"
+>>> open_myfile = open(myfile)
+>>> open_myfile.read()
+'dan_test'
+
+If already have a file called write_mode.txt opening it in "w" will overwrite the file.  If you wish to append data to the file you need to use "a" mode for
+append.  However when you are in append mode you are not able to check the contents of the file and then append to it based on conditionals.  If you want to check
+the contents of a file and also append data (essentially r+w and not overwrite) you need to use the "a+" mode.
