@@ -84,3 +84,18 @@ files behind.  For example:
 
 with open("example.txt", "w") as myfile:
     myfile.write("Dan D'Amico")
+
+
+
+ERROR HANDLING
+
+You would use error handling in your script so that when you run it and an error is encountered the script doesn't fail.
+The error needs to be explicitly stated so you are only ignoring that particular error instead of all errors.
+
+def divide(a,b):
+    try:
+        return a/b
+    except ZeroDivisionError:
+        return "Zero division doesnt make sense"
+
+print(divide(1/0))
