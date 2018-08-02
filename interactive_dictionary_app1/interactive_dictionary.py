@@ -10,6 +10,10 @@ def check_word(word):
     word = word.lower()
     if word in imported_data.keys():
         return imported_data[word]
+    elif word.title() in imported_data.keys():
+        return imported_data[word.title()]
+    elif word.upper() in imported_data.keys():
+        return imported_data[word.upper()]
     elif len(get_close_matches(word,imported_data.keys())) > 0:
         yn = input("Did you mean %s? Enter Y if yes and N if no: " %get_close_matches(word,imported_data.keys())[0])
         if yn == "Y":
