@@ -99,3 +99,162 @@ Once you know methods you can use you can start to manipulate the data within th
 
 
 Getting started with Jupyter notebooks
+
+Jupyter notebook is a hybrid tool between the python interactive shell and a text editor, which allows you to run blocks of code and then
+save them.
+
+to install you simply use pip
+
+pip install jupyter
+
+once you are ready to start you can run "jupiter notebook" from a command prompt.  It is generally a good practice to start a notebook
+from the directory you want the file to be saved in.  When you save a jupyter notebook you will create a ipynb file:
+
+ddamico@Danieles-MBP:~/Udemy/Python/python3-udemy/pandas_data_analysis_app2$ ls
+First_Notebook.ipynb  Supermarkets.ipynb    supermarkets/
+
+There a number of key shortcuts to interact with jupyter please see the following:
+
+http://maxmelnick.com/2016/04/19/python-beginner-tips-and-tricks.html
+
+Jupyter notebooks are mainly used for data analysis and data exploration.
+
+For example I have a bunch of data sources on my FS so to access them in jupyter I will use pandas in the following manner:
+
+Use the os module to list the files in my directory
+
+import os
+os.listdir("/Users/ddamico/Udemy/Python/python3-udemy/pandas_data_analysis_app2/supermarkets/")
+['.DS_Store',
+ 'supermarkets.zip',
+ 'supermarkets.json',
+ 'sample.csv',
+ 'supermarkets.csv',
+ 'supermarkets-semi-colons.txt',
+ 'supermarkets',
+ 'supermarkets.xlsx',
+ 'supermarkets-commas.txt']
+
+import and use pandas to load the data frame from a json file file:
+
+import pandas
+df1=pandas.read_json("/Users/ddamico/Udemy/Python/python3-udemy/pandas_data_analysis_app2/supermarkets/supermarkets.json")
+df1
+
+ID	Address	City	State	Country	Supermarket Name	Number of Employees
+0	1	3666 21st St	San Francisco	CA 94114	USA	Madeira	8
+1	2	735 Dolores St	San Francisco	CA 94119	USA	Bready Shop	15
+2	3	332 Hill St	San Francisco	California 94114	USA	Super River	25
+3	4	3995 23rd St	San Francisco	CA 94114	USA	Ben's Shop	10
+4	5	1056 Sanchez St	San Francisco	California	USA	Sanchez	12
+5	6	551 Alvarado St	San Francisco	CA 94114	USA	Richvalley	20
+
+
+
+Indexing and slicing a DataFrame
+
+Once you have a dataframe created in Jupyter you are able to slice it in order to get data out of rows and columns.  You can use a methods
+called position based indexing where you can pass the range of row labels and column labels to get just that portion of data out.  For example:
+
+Our dataframe is called df1 and has the following:
+
+ID	Address	City	State	Country	Supermarket Name	Number of Employees
+0	1	3666 21st St	San Francisco	CA 94114	USA	Madeira	8
+1	2	735 Dolores St	San Francisco	CA 94119	USA	Bready Shop	15
+2	3	332 Hill St	San Francisco	California 94114	USA	Super River	25
+3	4	3995 23rd St	San Francisco	CA 94114	USA	Ben's Shop	10
+4	5	1056 Sanchez St	San Francisco	California	USA	Sanchez	12
+5	6	551 Alvarado St	San Francisco	CA 94114	USA	Richvalley	20
+
+to get the a protion of the data out you would do:
+
+df1.loc[0:2,"Country":"ID"]
+
+This will give you:
+
+Country	Employees	ID
+0	USA	8	1
+1	USA	15	2
+2	USA	25	3
+
+The above method isnt commonly used, the more commonly used method to get data out of the dataframe.  Which is shown below:
+
+df1.iloc[0:3,2:5]
+
+That way will give you the same output:
+
+Country	Employees	ID
+0	USA	8	1
+1	USA	15	2
+2	USA	25	3
+
+
+
+Deleting rows and colums from DataFrames
+
+In order to delete colums or rows from a dataframe you can do:
+
+to drop a column you would use:
+
+df1.drop("Address",1)
+
+to delete a row you would use:
+
+df1.drop(0,0)
+
+
+
+Adding Rows and columns
+
+To add columns you would do the following:
+
+df1["Continent"]=df1.shape[0]*["North America"]
+
+which will give you a new dataframe that looks like this:
+
+Address	City	Country	Employees	ID	Name	State	Continent
+0	3666 21st St	San Francisco	USA	8	1	Madeira	CA 94114	North America
+1	735 Dolores St	San Francisco	USA	15	2	Bready Shop	CA 94119	North America
+2	332 Hill St	San Francisco	USA	25	3	Super River	California 94114	North America
+3	3995 23rd St	San Francisco	USA	10	4	Ben's Shop	CA 94114	North America
+4	1056 Sanchez St	San Francisco	USA	12	5	Sanchez	California	North America
+5	551 Alvarado St	San Francisco	USA	20	6	Richvalley	CA 94114	North America
+
+df1.shape gives you the dimensions of the dataframe is rows and columns so the new df is (6, 8).  The above example shows us adding a new
+columns with the same entry for each of its rows.
+
+The above is an inplace update which means it will update the dataframe as soon as it has ran.
+
+To modify a new column you can also do the following:
+
+df1["Continent"]=df1["Country"] + "," +["North America"]
+
+which will give you the following:
+
+
+Address	City	Country	Employees	ID	Name	State	Continent
+0	3666 21st St	San Francisco	USA	8	1	Madeira	CA 94114	USA,North America
+1	735 Dolores St	San Francisco	USA	15	2	Bready Shop	CA 94119	USA,North America
+2	332 Hill St	San Francisco	USA	25	3	Super River	California 94114	USA,North America
+3	3995 23rd St	San Francisco	USA	10	4	Ben's Shop	CA 94114	USA,North America
+4	1056 Sanchez St	San Francisco	USA	12	5	Sanchez	California	USA,North America
+5	551 Alvarado St	San Francisco	USA	20	6	Richvalley	CA 94114	USA,North America
+
+to add a new row you would do you need to use the .T method on your dataframe which transposes the columns into rows and viceversa.  Once That
+has been done then you can add a new column, transpose back and then that will give you your new row.
+
+so
+df1=df1.T
+df1[6]=["Mine", "Mine", "Mine", 1, 1, "Mine", "Mine","Mine"]
+df1=df1.T
+
+new dataframe
+
+Address	City	Country	Employees	ID	Name	State	Continent
+0	3666 21st St	San Francisco	USA	8	1	Madeira	CA 94114	USA,North America
+1	735 Dolores St	San Francisco	USA	15	2	Bready Shop	CA 94119	USA,North America
+2	332 Hill St	San Francisco	USA	25	3	Super River	California 94114	USA,North America
+3	3995 23rd St	San Francisco	USA	10	4	Ben's Shop	CA 94114	USA,North America
+4	1056 Sanchez St	San Francisco	USA	12	5	Sanchez	California	USA,North America
+5	551 Alvarado St	San Francisco	USA	20	6	Richvalley	CA 94114	USA,North America
+6	Mine	Mine	Mine	1	1	Mine	Mine	Mine
