@@ -30,3 +30,4 @@ Here we will detail all of the steps required to deploy our application onto her
 10. Set git to point to our new app:
    - heroku git:remote --app dd1927udemy
 11. At this point you are ready to push your app to the cloud - make sure your git repo is initialized where your.py file is located.
+   - git push heroku master
