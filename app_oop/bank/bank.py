@@ -7,6 +7,8 @@ class account:
         self.location = location
         with open(location) as file:
             self.account = file.read()
+#The self.account variable is broken up into self(object mapped to the class) and account(variable).  What happens here is that when we open the file for reading we map the contents of it to the obejct variable. 
+
 #In both the withdraw and deposit methods we reference the self.account variable which gets mapped to the contents of the account.txt file after it gets opened for reading.  We then create a new self.account variable by adding/subtractinng the amounts passed as arguments to the withdraw/deposit methods.
     def withdraw(self, withdraw):
         self.account = int(self.account) - withdraw
