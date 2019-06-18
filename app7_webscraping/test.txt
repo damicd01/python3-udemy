@@ -1,0 +1,90 @@
+<h4 class="propPrice">
+
+
+            $725,000
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $452,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $396,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $389,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $254,000
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $252,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $210,000
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $209,000
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $199,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
+<h4 class="propPrice">
+
+
+            $196,900
+
+
+
+      <span class="IconPropertyFavorite16"></span>
+</h4>
